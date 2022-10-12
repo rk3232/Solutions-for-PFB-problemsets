@@ -9,6 +9,8 @@ if num_input > 0 :
 	if num_input < 50:
 		if even_num == 0 :
 			print(num_input, 'is less than 50 and is even')
+		else:
+			print(num_input, 'is less than 50 and odd')
 	elif num_input > 50:
 		if divide_3 == 0:
 			print(num_input, 'is greater than 50 and divisible by 3')
