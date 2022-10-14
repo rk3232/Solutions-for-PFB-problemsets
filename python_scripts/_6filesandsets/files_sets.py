@@ -163,14 +163,38 @@ print(full_revcomp_seq)
  
 #print as fasta format
 for k,v in full_revcomp_seq.items():
-	print('>' + k + '\n' + v)
+	print('>', k, '\n', v, '\n')
 
+
+####open a fastq and reach each line then count line length
+count_line = []
+with open('Python_06.fastq', 'r') as fastq_read:
+	for line in fastq_read:
+		line = line.rstrip()
+		count_line.append(len(line))
+	print(count_line)
+#have character counts per line
+sum_char = sum(count_line)
+print(sum_char)
+
+#how many lines?
+num_line=len(count_line)
+print(num_line)
+
+#calculate average line length
+average_line_len = sum_char/num_line
+print(f'The average length of lines is: {average_line_len}')
 		
+#### Fasta parser###
+#load in Python_06.fasta
+input_fasta= []
+with open('Python_06.fasta', 'r') as fasta:
+	for line in fasta:
+		input_fasta.append(line)
+print(input_fasta)
 
-
- 
-
-
+#figure out formatting to put into dictionary
+#try if statements
 
 
 
