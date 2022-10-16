@@ -25,16 +25,18 @@ print(thanks_Lola)
 
 #read in fasta file Python_07.fasta
 #read in file
-header = ''
+gene_ID_header = ''
 fasta_strings = {}
 with open('Python_07.fasta', 'r') as read_fasta:
 	for line in read_fasta:
 		line = line.rstrip().strip()
-		if re.finditer(r'^>(.*)', line):
-			header = obj.group(1)
+		if re.search(r'^>(.*)', line):
+			for obj in re.finditer(r'^>(\S*)\s(.+)', line):
+				header = obj.group(1)
+				print(header)
+				description = obj.group(2)	
 		else:
 			fasta_strings[header]+=sequence
-
 	
 print(fasta_strings)
 
@@ -43,6 +45,20 @@ print(fasta_strings)
 
 
 
+fasta_dict = {}
+header = ''
+sequence = ''
+with open(fasta_input, 'r') as fasta_read:
+	for line in fasta_read:
+		line = line.rstrip()
+		if re.search(r'^>', line):
+			for obj in re.finditer(r'^>(\S*)\s', line):
+        header = obj.group(1)
+        fasta_dict[header]=sequence       
+     else:
+       sequence = line
+       fasta_dict[header]+=sequence
+ print(fasta_dict)
 
 
 
